@@ -34,42 +34,66 @@ Welcome! This guide will get you playing Switch in just a few minutes - **no cod
 
 ## Step 3: Play the Game! 🎉
 
-### Windows Users:
-1. Open the `Switch_Game` folder
-2. Find the file called **`PLAY_GAME.bat`**
-3. **Double-click it**
-4. The game starts! 🎮
+### 🎨 Graphical Version (RECOMMENDED!)
 
-### Mac/Linux Users:
+**Windows Users:**
 1. Open the `Switch_Game` folder
-2. Find the file called **`PLAY_GAME.sh`**
+2. Find the file called **`PLAY_GAME_GUI.bat`**
+3. **Double-click it**
+4. A beautiful card game window opens! 🎮
+
+**Mac/Linux Users:**
+1. Open the `Switch_Game` folder
+2. Find the file called **`PLAY_GAME_GUI.sh`**
 3. **Double-click it** (or right-click → Open)
-4. The game starts! 🎮
+4. A beautiful card game window opens! 🎮
+
+### 📝 Terminal Version (Classic)
+
+**Windows:** Double-click `PLAY_GAME.bat`
+**Mac/Linux:** Double-click `PLAY_GAME.sh`
 
 ## That's It!
 
 From now on, whenever you want to play:
-- Just **double-click** `PLAY_GAME.bat` (Windows) or `PLAY_GAME.sh` (Mac/Linux)
+- **GUI Version:** Double-click `PLAY_GAME_GUI.bat` or `PLAY_GAME_GUI.sh` ⭐ Recommended!
+- **Terminal Version:** Double-click `PLAY_GAME.bat` or `PLAY_GAME.sh`
 
 ---
 
 ## 🎯 How to Play the Game
 
-Once the game starts:
+### GUI Version (Click and Play!)
 
-1. **Enter your name** (or just press Enter)
-2. You'll see:
-   - **Top card** on the table
-   - **Your hand** (numbered 1, 2, 3, etc.)
-   - **Opponents' card counts**
+Once the game window opens:
 
-3. **On your turn:**
-   - Type a **number** (1, 2, 3...) to play that card
-   - Type **`d`** to draw a card (if you can't play)
-   - Type **`h`** to see the rules
-   - Type **`q`** to quit
+1. **Enter your name** in the popup
+2. You'll see a beautiful game board with:
+   - **Opponents' cards** at the top (face down)
+   - **Deck** and **Discard pile** in the center
+   - **Your cards** at the bottom (face up)
+
+3. **How to play:**
+   - **Click a card** in your hand to play it (playable cards have a GREEN outline!)
+   - **Click the deck** to draw a card if you can't play
+   - **Click "Help"** to see the rules anytime
+   - **Choose suit** when you play an Ace
 
 4. **Goal:** Get rid of all your cards before your opponents!
+
+### Terminal Version
+
+1. **Enter your name** (or just press Enter)
+2. You'll see text showing:
+   - Top card on the table
+   - Your hand (numbered 1, 2, 3, etc.)
+   - Opponents' card counts
+
+3. **On your turn:**
+   - Type a **number** to play that card
+   - Type **`d`** to draw a card
+   - Type **`h`** for help
+   - Type **`q`** to quit
 
 ### Quick Rules:
 - Match the **suit** (♠♥♦♣) or **number/letter** of the top card

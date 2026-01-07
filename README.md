@@ -23,19 +23,30 @@ A Python implementation of the classic card game **Switch** (also known as Crazy
   - **Red Kings (♥/♦)**: Defense - cancel Black King attacks
 
 - **Configurable Rules**: Toggle various game mechanics on/off
-- **Command-Line Interface**: Simple and intuitive text-based UI
+- **Two Play Modes**: Beautiful GUI or classic command-line interface
 - **Smart AI Strategies**: Each AI has unique decision-making patterns
 
 ## 🚀 Quick Start
 
-### ⭐ **EASIEST METHOD** (For Beginners)
+### ⭐ **EASIEST METHOD** - Graphical Version (Recommended!)
 
-**New to coding?** Just download and double-click to play!
+**New to coding?** Just download and double-click to play with a beautiful visual interface!
 
 1. Download this repository as a ZIP file (green "Code" button → "Download ZIP")
 2. Extract/unzip the folder
-3. **Double-click** `PLAY_GAME.bat` (Windows) or `PLAY_GAME.sh` (Mac/Linux)
-4. Play! 🎮
+3. **Double-click** `PLAY_GAME_GUI.bat` (Windows) or `PLAY_GAME_GUI.sh` (Mac/Linux)
+4. Enjoy the graphical card game! 🎮
+
+**Features:**
+- ✨ Click cards with your mouse to play
+- 🎴 Beautiful card graphics with suits and ranks
+- 🌈 Color-coded playable cards (green outline)
+- 🎯 Visual deck and discard pile
+- 💫 Smooth AI animations
+
+### Classic Terminal Version
+
+Prefer text-based? Double-click `PLAY_GAME.bat` (Windows) or `PLAY_GAME.sh` (Mac/Linux)
 
 📖 **Need help?** See [EASY_SETUP.md](EASY_SETUP.md) for detailed beginner instructions.
 
@@ -57,15 +68,14 @@ cd Switch_Game
 
 **Running the Game:**
 
+GUI Version (Recommended):
 ```bash
-python main.py
+python main_gui.py
 ```
 
-Or make it executable:
-
+Terminal Version:
 ```bash
-chmod +x main.py
-./main.py
+python main.py
 ```
 
 ## 🎯 How to Play
