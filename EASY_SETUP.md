@@ -97,6 +97,7 @@ Once the game window opens:
 
 ### Quick Rules:
 - Match the **suit** (♠♥♦♣) or **number/letter** of the top card
+- **Drawing a card ends your turn** - you can't play the card you just drew!
 - **Special cards:**
   - **A** = Wild (choose any suit)
   - **2** = Next player draws 2 cards

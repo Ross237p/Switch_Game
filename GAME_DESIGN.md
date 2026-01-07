@@ -18,8 +18,7 @@
 ### Basic Play
 - On your turn, play a card matching the top card by suit or rank
 - If you cannot play, draw one card from the pile
-- If the drawn card is playable, you may play it immediately
-- Otherwise, turn ends
+- **Drawing a card ends your turn immediately** (you cannot play the card you just drew)
 
 ### Win Condition
 - First player to empty their hand wins

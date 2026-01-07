@@ -238,6 +238,7 @@ class GameManager:
     def draw_card(self) -> Tuple[bool, str]:
         """
         Draw a card for the current player.
+        Drawing a card always ends your turn.
 
         Returns:
             Tuple of (success, message)
@@ -251,13 +252,9 @@ class GameManager:
 
         card = cards[0]
 
-        # Check if drawn card can be played immediately
-        if self.can_play_card(card):
-            return True, f"Drew {card} - you can play it"
-
-        # Otherwise, turn ends
+        # Drawing always ends your turn
         self.end_turn()
-        return True, f"Drew {card} - cannot play"
+        return True, f"Drew {card} - turn ends"
 
     def end_turn(self):
         """End the current player's turn and advance to next player."""

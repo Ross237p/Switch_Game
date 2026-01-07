@@ -83,7 +83,7 @@ python main.py
 ### Basic Rules
 
 1. Match the top card by **suit** or **rank**
-2. If you can't play, **draw one card**
+2. If you can't play, **draw one card** (drawing ends your turn immediately)
 3. Declare "Last Card" when you have 2 cards remaining
 4. First player to empty their hand **wins**!
 
