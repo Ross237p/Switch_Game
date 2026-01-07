@@ -132,6 +132,14 @@ class GameManager:
         if self.state.suit_run_active:
             return True, f"Suit run started with {card.suit}"
 
+        # Check if player has more cards of same rank (for rank chaining)
+        if not self.state.rank_chain_active:
+            same_rank_cards = player.get_cards_of_rank(card.rank)
+            if same_rank_cards:
+                # Start rank chain
+                self.state.start_rank_chain(card.rank, player)
+                return True, f"Rank chain available! Play more {card.rank}s or end chain"
+
         return True, "Card played successfully"
 
     def continue_suit_run(self, card: Optional[Card] = None) -> Tuple[bool, str]:
@@ -184,6 +192,48 @@ class GameManager:
             return True, "Suit run ended (no more cards)"
 
         return True, "Continue suit run or end"
+
+    def continue_rank_chain(self, card: Optional[Card] = None) -> Tuple[bool, str]:
+        """
+        Continue or end a rank chain.
+
+        Args:
+            card: Card to play in the chain, or None to end the chain
+
+        Returns:
+            Tuple of (success, message)
+        """
+        if not self.state.rank_chain_active:
+            return False, "No rank chain is active"
+
+        player = self.current_player()
+
+        # End the chain
+        if card is None:
+            self.state.end_rank_chain()
+            self.end_turn()
+            return True, "Rank chain ended"
+
+        # Continue the chain
+        if card.rank != self.state.rank_chain_rank:
+            return False, f"Card must be of rank {self.state.rank_chain_rank}"
+
+        # Play the card
+        success, msg = self.play_card(card)
+        if not success:
+            return False, msg
+
+        # Check if player won
+        if player.is_hand_empty():
+            return True, f"{player.name} wins!"
+
+        # Check if player has more cards of this rank
+        if len(player.get_cards_of_rank(self.state.rank_chain_rank)) == 0:
+            self.state.end_rank_chain()
+            self.end_turn()
+            return True, "Rank chain ended (no more cards)"
+
+        return True, "Continue rank chain or end"
 
     def draw_card(self) -> Tuple[bool, str]:
         """

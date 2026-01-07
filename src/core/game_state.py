@@ -29,6 +29,7 @@ class GamePhase(Enum):
     SETUP = "setup"
     PLAYING = "playing"
     SUIT_RUN = "suit_run"
+    RANK_CHAIN = "rank_chain"
     GAME_OVER = "game_over"
 
 
@@ -81,6 +82,9 @@ class GameState:
 
         self.suit_run_active = False
         self.suit_run_suit: Optional[Suit] = None
+
+        self.rank_chain_active = False
+        self.rank_chain_rank = None
 
         self.winner: Optional[Player] = None
         self.game_log: List[str] = []
@@ -147,6 +151,10 @@ class GameState:
         # During suit run, can only play cards of the run's suit
         if self.suit_run_active:
             return card.suit == self.suit_run_suit
+
+        # During rank chain, can only play cards of the chain's rank
+        if self.rank_chain_active:
+            return card.rank == self.rank_chain_rank
 
         # Check if card can be played on top card
         return card.can_play_on(top, self.active_suit)
@@ -256,6 +264,26 @@ class GameState:
         self.suit_run_suit = None
         self.phase = GamePhase.PLAYING
         self.log("Suit run ended")
+
+    def start_rank_chain(self, rank, player: Player):
+        """
+        Start a rank chain (playing multiple cards of same rank).
+
+        Args:
+            rank: The rank of cards in the chain
+            player: The player starting the chain
+        """
+        self.rank_chain_active = True
+        self.rank_chain_rank = rank
+        self.phase = GamePhase.RANK_CHAIN
+        self.log(f"{player.name} starts a rank chain with {rank}")
+
+    def end_rank_chain(self):
+        """End the current rank chain."""
+        self.rank_chain_active = False
+        self.rank_chain_rank = None
+        self.phase = GamePhase.PLAYING
+        self.log("Rank chain ended")
 
     def draw_cards(self, player: Player, count: int) -> List[Card]:
         """

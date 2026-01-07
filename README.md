@@ -99,6 +99,14 @@ python main.py
 | **K♠/K♣** | Next player must draw 5 cards |
 | **K♥/K♦** | Cancel a Black King attack |
 
+### Advanced Mechanics
+
+**Rank Chaining:** After playing a card, you can immediately play additional cards of the **same rank** (e.g., play 4♥, then 4♣, then 4♠). This allows you to:
+- Change the suit multiple times in your favor
+- Stack multiple 2s to create massive draw penalties
+- Stack multiple Black Kings for devastating attacks
+- Quickly empty your hand of matching ranks
+
 ### Game Controls
 
 During your turn:

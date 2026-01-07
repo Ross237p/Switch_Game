@@ -360,6 +360,10 @@ class SwitchGUI:
         elif self.game.state.suit_run_active:
             self.update_status(f"🎯 Suit run active! Play more {self.game.state.suit_run_suit} or click 'End Run'")
 
+        # Check for rank chain
+        elif self.game.state.rank_chain_active:
+            self.update_status(f"🔗 Rank chain! Play more {self.game.state.rank_chain_rank}s or click 'End Chain'")
+
         # Normal status
         elif self.game.is_human_turn():
             playable = self.game.get_playable_cards()
@@ -380,6 +384,11 @@ class SwitchGUI:
         # Check for suit run
         if self.game.state.suit_run_active:
             self.handle_suit_run_click(event)
+            return
+
+        # Check for rank chain
+        if self.game.state.rank_chain_active:
+            self.handle_rank_chain_click(event)
             return
 
         # Check for pending effects
@@ -449,6 +458,13 @@ class SwitchGUI:
                 self.show_end_run_button()
                 return
 
+            # Handle rank chain
+            if self.game.state.rank_chain_active:
+                self.update_status(f"🔗 Rank chain! Play more {self.game.state.rank_chain_rank}s or End Chain")
+                # Add End Chain button
+                self.show_end_chain_button()
+                return
+
             # End turn and play AI turns
             self.game.end_turn()
             self.root.after(500, self.play_ai_turns)
@@ -462,6 +478,10 @@ class SwitchGUI:
 
         if self.game.state.suit_run_active:
             self.update_status("❌ Cannot draw during suit run!")
+            return
+
+        if self.game.state.rank_chain_active:
+            self.update_status("❌ Cannot draw during rank chain!")
             return
 
         success, msg = self.game.draw_card()
@@ -539,6 +559,54 @@ class SwitchGUI:
     def end_suit_run_clicked(self):
         """Handle end suit run button click."""
         self.game.continue_suit_run(None)  # Pass None to end run
+        self.draw_button.config(
+            text="Draw Card",
+            command=self.draw_card_clicked,
+            bg="#4A90E2"
+        )
+        self.update_display()
+        self.root.after(500, self.play_ai_turns)
+
+    def handle_rank_chain_click(self, event):
+        """Handle clicks during a rank chain."""
+        for widget in self.card_widgets:
+            if widget.is_clicked(event.x, event.y):
+                card = widget.card
+
+                if card.rank != self.game.state.rank_chain_rank:
+                    self.update_status(f"❌ Must play {self.game.state.rank_chain_rank} cards!")
+                    return
+
+                success, msg = self.game.continue_rank_chain(card)
+                self.update_display()
+
+                if self.game.is_game_over():
+                    self.show_game_over()
+                    return
+
+                if not self.game.state.rank_chain_active:
+                    # Chain ended
+                    self.draw_button.config(
+                        text="Draw Card",
+                        command=self.draw_card_clicked,
+                        bg="#4A90E2"
+                    )
+                    # Don't call play_ai_turns here, continue_rank_chain already ended turn
+
+                return
+
+    def show_end_chain_button(self):
+        """Show button to end rank chain."""
+        # This is shown in the draw button area
+        self.draw_button.config(
+            text="End Rank Chain",
+            command=self.end_rank_chain_clicked,
+            bg="#E74C3C"
+        )
+
+    def end_rank_chain_clicked(self):
+        """Handle end rank chain button click."""
+        self.game.continue_rank_chain(None)  # Pass None to end chain
         self.draw_button.config(
             text="Draw Card",
             command=self.draw_card_clicked,

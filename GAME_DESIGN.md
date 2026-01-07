@@ -91,7 +91,26 @@
   - Player must draw 1 card
   - Turn ends
 
-### C. Attack/Defense (King) Mechanic
+### C. Rank Chaining Mechanic
+**Trigger:** Player plays any card
+
+**Process:**
+1. After playing a card, if the player has more cards of the same rank, they can continue playing them
+2. Each card played changes the suit to that card's suit
+3. Player decides when to stop or plays all cards of that rank
+4. Turn ends when player stops or has no more cards of that rank
+
+**Strategic Applications:**
+- **Multiple 2s:** Playing multiple 2s in sequence stacks the draw penalty (2 → 4 → 6, etc.)
+- **Multiple Black Kings:** Playing multiple Black Kings stacks the attack penalty (5 → 10 → 15, etc.)
+- **Suit Control:** The final card in the chain determines the active suit
+- **Hand Clearing:** Efficiently empty your hand by playing multiple cards of the same rank
+
+**Examples:**
+- 4♥ on pile → Player has 4♣ and 4♠ → Play 4♣ (suit is now ♣) → Play 4♠ (suit is now ♠)
+- 2♦ on pile → Player plays 2♥ → Next player plays 2♠ → Following player must draw 6 cards or play another 2
+
+### D. Attack/Defense (King) Mechanic
 
 **Attack Sequence:**
 1. Player A plays Black King (♠ or ♣)
@@ -107,7 +126,7 @@
   - Draw 5 cards
   - Turn ends
 
-### D. Cumulative Draw (2s) Mechanic
+### E. Cumulative Draw (2s) Mechanic
 
 **Example Sequence:**
 1. Player A plays 2 (Penalty: 2 cards)
@@ -120,8 +139,9 @@
 - Each 2 adds 2 to the penalty counter
 - Chain continues until a player cannot stack
 - That player draws the total accumulated penalty
+- Using rank chaining, a player can play multiple 2s at once to increase the penalty further
 
-### E. Wild Card (Ace) Mechanic
+### F. Wild Card (Ace) Mechanic
 
 **Trigger:** Player plays an Ace
 
