@@ -28,11 +28,24 @@ A Python implementation of the classic card game **Switch** (also known as Crazy
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### ⭐ **EASIEST METHOD** (For Beginners)
 
-- Python 3.7 or higher
+**New to coding?** Just download and double-click to play!
 
-### Installation
+1. Download this repository as a ZIP file (green "Code" button → "Download ZIP")
+2. Extract/unzip the folder
+3. **Double-click** `PLAY_GAME.bat` (Windows) or `PLAY_GAME.sh` (Mac/Linux)
+4. Play! 🎮
+
+📖 **Need help?** See [EASY_SETUP.md](EASY_SETUP.md) for detailed beginner instructions.
+
+---
+
+### 💻 For Developers
+
+**Prerequisites:** Python 3.7 or higher
+
+**Installation:**
 
 1. Clone this repository:
 ```bash
@@ -42,9 +55,7 @@ cd Switch_Game
 
 2. No additional dependencies required! The game uses only Python standard library.
 
-### Running the Game
-
-Simply run:
+**Running the Game:**
 
 ```bash
 python main.py
