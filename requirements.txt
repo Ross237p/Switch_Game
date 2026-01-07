@@ -1,0 +1,5 @@
+# Switch Card Game - Python Requirements
+# No external dependencies required - uses Python standard library only
+
+# For development/testing (optional):
+# pytest>=7.0.0
